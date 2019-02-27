@@ -1,0 +1,43 @@
+<html>
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="app.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <title>Shopping Check off</title>
+</head>
+
+<body ng-app="ShoppingListCheckOff">
+    <h3 class="text-center">Shopping List Check Off</h3>
+    <hr>
+    <div>
+        <div class="col-md-6" ng-controller="ToBuyController as toBuy">
+            <h4>To Buy#</h4>
+            <hr>
+            <div ng-if="toBuy.toBuyItems.length<=0">Everything is bought!</div>
+            <div class="row" ng-repeat="item in toBuy.toBuyItems">
+                <div class="col-md-2 "> Buy  {{item.quantity}}</div>
+                <div class="col-md-3">{{item.name}} </div>
+                <div class="col-md-1"><button class="btn btn-primary btn-xs"
+                        ng-click="toBuy.addtoBought(item,$index)">Bought</button>
+                </div>
+                <br>
+            </div>
+        </div>
+        <div class="col-md-6" ng-controller="AlreadyBoughtController  as alreadyBought">
+            <h4>Already Bought#</h4>
+            <hr>
+            <div ng-if="alreadyBought.toBoughtItems.length<=0">Nothing bought yet</div>
+            <div class="row" ng-repeat="item in alreadyBought.toBoughtItems">
+                <div class="col-md-2 "> Bought  {{item.quantity}}</div>
+                <div class="col-md-3">{{item.name}} </div>
+                <div class="col-md-1"></div>
+                <br>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
